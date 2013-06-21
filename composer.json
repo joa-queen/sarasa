@@ -1,9 +1,9 @@
 {
-    "name": "sarasa/core",
+    "name": "sarasa/sarasa",
     "type": "php-framework",
     "description": "PHP Core Framework for PHP 5.3",
     "keywords": ["framework"],
-    "homepage": "http://github.com/joacodeviaje/sarasa-core",
+    "homepage": "http://github.com/joacodeviaje/sarasa",
     "license": "MIT",
     "authors": [
         {
@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "sarasa/sarasa": "0.1.*"
+        "sarasa/core": "0.1.*"
 
     },
     "autoload": {
