@@ -1,4 +1,4 @@
-{extends file="sarasa/templates/layout.tpl"}
+{extends file="layout.tpl"}
 
 {block name=container}
 

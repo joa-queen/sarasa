@@ -5,3 +5,4 @@ error_log
 *.sublime-workspace
 logs/
 vendor/
+!public/css/vendor/
