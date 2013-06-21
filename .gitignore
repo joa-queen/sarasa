@@ -3,6 +3,5 @@ error_log
 *.tpl.php
 *.sublime-project
 *.sublime-workspace
-config.json
 logs/
 vendor/
