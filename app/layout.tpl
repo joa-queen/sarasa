@@ -63,7 +63,7 @@
             ga('create','UA-XXXXX-X');ga('send','pageview');
         </script>*}
 
-        {if $sarasa.development}{include file="sarasa/templates/_debugbar.tpl"}{/if}
+        {if $sarasa.development}{include file="Sarasa/Views/debugbar.tpl"}{/if}
 
     </body>
 </html>

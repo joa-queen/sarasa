@@ -1,11 +1,11 @@
 {
 	"_sarasa": {
-		"bundle": "sarasa",
+		"bundle": "Sarasa",
 		"prefix": "_sarasa"
 	},
 	"home": {
 		"url"       : "",
-		"bundle"    : "home",
+		"bundle"    : "Home",
 		"controller": "main",
 		"action"    : "index",
 		"method"    : "get"
