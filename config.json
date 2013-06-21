@@ -1,0 +1,15 @@
+{
+	"sitename": "Sarasa Framework",
+	"domain"  : "http://sarasaframework.com",
+
+	"preurl"  : "/",
+	"postitle": "Sarasa Framework",
+
+	"production" : false,
+	"maintenance": false,
+
+	"dbname": "dbname",
+	"dbuser": "dbuser",
+	"dbpass": "dbpass",
+	"dbhost": "localhost"
+}
