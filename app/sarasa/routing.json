@@ -1,0 +1,7 @@
+{
+	"debugger": {
+		"url": "debugger/:dir1/:dir2/:time",
+		"bundle": "sarasa",
+		"controller": "debugger"
+	}
+}

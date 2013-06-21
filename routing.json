@@ -1,0 +1,13 @@
+{
+	"_sarasa": {
+		"bundle": "sarasa",
+		"prefix": "_sarasa"
+	},
+	"home": {
+		"url"       : "",
+		"bundle"    : "home",
+		"controller": "main",
+		"action"    : "index",
+		"method"    : "get"
+	}
+}
