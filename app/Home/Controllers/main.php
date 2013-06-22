@@ -2,7 +2,7 @@
 
 use Sarasa\Core\Template;
 
-class Controller extends Sarasa\Core\FrontController {
+class Controller extends Sarasa\Models\MainController {
 	
 	public function index()
 	{
