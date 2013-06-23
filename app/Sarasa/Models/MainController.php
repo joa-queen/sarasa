@@ -1,6 +1,6 @@
 <?php
 
-namespace Saras\Models;
+namespace Sarasa\Models;
 
 class MainController extends \Sarasa\Core\FrontController
 {

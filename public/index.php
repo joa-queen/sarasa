@@ -12,7 +12,10 @@ session_start();
 
 try {
 	$action = FrontController::route();
-	$controller = new Controller();
+
+	$controllername = FrontController::$bundle . '\Controllers\\' . FrontController::$controller;
+	$controllereval = '$controller = new ' . $controllername . '();';
+	eval($controllereval);
 
 	if (isset($_SERVER['HTTP_AJAX_FUNCTION'])) {
 		try {
@@ -26,7 +29,7 @@ try {
 			$objResponse->script('stoploading();');
 			
 			if ($function == 'index') throw new CustomException('Nombre de la función inválido.');
-			if (!method_exists('Controller', $function)) throw new CustomException("No se encontró la función");
+			if (!method_exists($controllername, $function)) throw new CustomException("No se encontró la función");
 		
 			$func  = '$controller->' . $function . '($objResponse,$parametros);';
 			eval($func);
@@ -43,7 +46,7 @@ try {
 	else {
 		try {
 			$func = '$controller->' . $action . '();';
-			if (!method_exists('Controller', $action)) throw new CustomException("No se encontró la acción", 404);
+			if (!method_exists($controllername, $action)) throw new CustomException("No se encontró la acción", 404);
 			eval($func);
 		} catch (Exception $e) {
 			FrontController::handlePageException($e);

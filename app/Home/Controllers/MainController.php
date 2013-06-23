@@ -1,8 +1,10 @@
 <?php
 
+namespace Home\Controllers;
+
 use Sarasa\Core\Template;
 
-class Controller extends Sarasa\Models\MainController {
+class MainController extends \Sarasa\Models\MainController {
 	
 	public function index()
 	{

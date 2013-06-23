@@ -1,9 +1,11 @@
 <?php
 
+namespace Sarasa\Controllers;
+
 use Sarasa\Core\Template;
 use Sarasa\Core\CustomException;
 
-class Controller extends Sarasa\Core\FrontController {
+class DebuggerController extends \Sarasa\Core\FrontController {
 	
 	public function index()
 	{
