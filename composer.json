@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "sarasa/core": "0.1.*"
+        "sarasa/core": "0.2.*"
 
     },
     "autoload": {
