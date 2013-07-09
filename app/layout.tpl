@@ -10,7 +10,6 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
-        <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/css/vendor/bootstrap.min.css">
         <link rel="stylesheet" href="/css/vendor/bootstrap-responsive.min.css">
         {foreach from=$sarasa.css item="css"}
@@ -43,7 +42,6 @@
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
         <script>window.jQuery || document.write('<script src="/js/vendor/jquery-ui-1.10.3.min.js"><\/script>')</script>
         <script src="/js/plugins.js"></script>
-        <script src="/js/main.js"></script>
         {foreach from=$sarasa.js item="js"}
         <script src="/js/{$js}"></script>
         {/foreach}
