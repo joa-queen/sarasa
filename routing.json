@@ -6,8 +6,6 @@
 	"home": {
 		"url"       : "",
 		"bundle"    : "Home",
-		"controller": "main",
-		"action"    : "index",
-		"method"    : "get"
+		"controller": "main"
 	}
 }
