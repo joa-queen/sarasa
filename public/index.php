@@ -1,11 +1,12 @@
 <?php
 
-require_once '../vendor/autoload.php';
+require_once "../vendor/autoload.php";
 
 use Sarasa\Core\FrontController;
 use Sarasa\Core\Template;
 use Sarasa\Core\AjaxResponse;
 use Sarasa\Core\CustomException;
+use Sarasa\Core\Lang;
 
 session_start();
 
@@ -21,36 +22,47 @@ try {
             $function = $_SERVER['HTTP_AJAX_FUNCTION'];
             $parametros = $_REQUEST;
             $url = $_SERVER['HTTP_AJAX_URL'];
-
+            
             if (isset($parametros['debughash'])) {
                 $controller->parenthash = $parametros['debughash'];
             }
 
             $objResponse = new AjaxResponse();
             $objResponse->script('stoploading();');
-
+            
             if ($function == 'index') {
                 throw new CustomException('Nombre de la función inválido.');
             }
-
             if (!method_exists($controllername, $function)) {
                 throw new CustomException("No se encontró la función");
             }
-
+        
             $func  = '$controller->' . $function . '($objResponse,$parametros);';
             eval($func);
 
             if (!FrontController::config('production') && $function != 'debugbar') {
                 $objResponse->script('loaddebugbar("' . FrontController::$debugpath  . '/' . FrontController::$mtime . '");');
             }
-        } catch (Exception $e) {
-            $objResponse->script('error("' . addslashes(str_replace("\n", "", nl2br($e))) . '");');
+        } catch (\Exception $e) {
+            $objResponse->script('error("'.addslashes(str_replace("\n", "", nl2br($e->getMessage()))).'");');
         }
-
+        
         echo $objResponse->toJSON();
     } else {
         try {
-            $func = '$controller->' . $action . '();';
+            $reflection = new ReflectionMethod($controllername, $action);
+            $parameters = $reflection->getParameters();
+            $params = array();
+
+            foreach ($parameters as $parameter) {
+                if (isset(FrontController::$parameters[$parameter->name])) {
+                    $params[] = '\Sarasa\Core\FrontController::$parameters["' . $parameter->name . '"]';
+                } else {
+                    $params[] = 'null';
+                }
+            }
+
+            $func = '$controller->' . $action . '(' . implode(', ', $params) . ');';
             if (!method_exists($controllername, $action)) {
                 throw new CustomException("No se encontró la acción", 404);
             }
@@ -59,7 +71,7 @@ try {
             FrontController::handlePageException($e);
         }
     }
-
+    
 } catch (Exception $e) {
     Template::error500($e);
 }
