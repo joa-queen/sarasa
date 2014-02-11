@@ -20,11 +20,11 @@ try {
     if (isset($_SERVER['HTTP_AJAX_FUNCTION'])) {
         try {
             $function = $_SERVER['HTTP_AJAX_FUNCTION'];
-            $parametros = $_REQUEST;
+            $parameters = $_POST;
             $url = $_SERVER['HTTP_AJAX_URL'];
             
-            if (isset($parametros['debughash'])) {
-                $controller->parenthash = $parametros['debughash'];
+            if (isset($parameters['debughash'])) {
+                $controller->parenthash = $parameters['debughash'];
             }
 
             $objResponse = new AjaxResponse();
@@ -37,7 +37,7 @@ try {
                 throw new CustomException("No se encontró la función");
             }
         
-            $func  = '$controller->' . $function . '($objResponse,$parametros);';
+            $func  = '$controller->' . $function . '($objResponse, $parameters);';
             eval($func);
 
             if (!FrontController::config('production') && $function != 'debugbar') {
