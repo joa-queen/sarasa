@@ -8,6 +8,9 @@ use Sarasa\Core\AjaxResponse;
 use Sarasa\Core\CustomException;
 use Sarasa\Core\Lang;
 
+$er = ((\Sarasa\Core\FrontController::config('production') || (isset($_SERVER['HTTP_AJAX_FUNCTION']) && $_SERVER['HTTP_AJAX_FUNCTION'] == 'debugbar')) ? 0 : E_ALL);
+error_reporting($er);
+
 session_start();
 
 try {
